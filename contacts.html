@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Albert Wu - College Student</title>
+    <title>Contacts</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -35,22 +35,6 @@
             background-color: #FF4c24; /* Bright orange on hover */
             color: #131313; /* Dark text on hover */
         }
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your image */
-            background-size: cover;
-            background-position: center;
-        }
-        .hero-content {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            color: white; /* White text in hero */
-        }
         .content {
             padding: 20px;
             max-width: 800px;
@@ -68,11 +52,46 @@
             bottom: 0;
             width: 100%;
         }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #FF4c24; /* Bright orange button */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e03e1b; /* Darker orange on hover */
+        }
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .contact-info img {
+            width: 50px; /* Adjust size as needed */
+            margin: 10px;
+        }
+        .contact-info a {
+            display: block;
+            margin: 5px 0;
+            text-decoration: none;
+            color: #FF4c24; /* Bright orange links */
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Albert Wu</h1>
+        <h1>Contact Albert Wu</h1>
     </div>
 
     <div class="navbar">
@@ -81,17 +100,22 @@
         <a href="contacts.html">Contact</a>
     </div>
 
-    <div class="hero">
-        <div class="hero-content">
-            <h2>Welcome to My Personal Website</h2>
-            <p>Your journey to learning and innovation starts here.</p>
-            <a href="#resources" class="btn" style="background-color: #FF4c24; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Get Started</a>
-        </div>
-    </div>
+    <div class="content">
+        <h2>Get in Touch</h2>
+        <p>If you have any questions or would like to connect, please fill out the form below:</p>
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
 
-    <div class="content" id="home">
-        <h2>About Me</h2>
-        <p>Hello! My name is Albert Wu, and I am a college student pursuing a degree in Computer Science. I have a passion for technology and enjoy learning about new advancements in the field. This website serves as a platform to share my journey, projects, and interests.</p>
+        <div class="contact-info">
+            <h3>Or you can contact me through:</h3>
+            <img src="path/to/logo.png" alt="App Logo"> <!-- Replace with your logo image path -->
+            <a href="mailto:youremail@example.com">Email</a> <!-- Replace with your email -->
+            <a href="https://instagram.com/yourinstagram" target="_blank">Instagram</a> <!-- Replace with your Instagram link -->
+        </div>
     </div>
 
     <div class="footer">
