@@ -1,101 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Albert Wu - College Student</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            background-color: #131313; /* Dark background */
-            margin: 0;
-            font-family: "Arial", sans-serif;
-            color: white; /* Default text color */
-        }
-        .header {
-            background-color: #FF4c24; /* Bright orange header */
-            padding: 20px;
-            text-align: center;
-        }
-        .navbar {
-            overflow: hidden;
-            background-color: #131313; /* Dark navbar */
-        }
-        .navbar a {
-            float: left;
-            display: block;
-            color: #FF4c24; /* Bright orange links */
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        .navbar a:hover {
-            background-color: #FF4c24; /* Bright orange on hover */
-            color: #131313; /* Dark text on hover */
-        }
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your image */
-            background-size: cover;
-            background-position: center;
-        }
-        .hero-content {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            color: white; /* White text in hero */
-        }
-        .content {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            background-color: #1a1a1a; /* Slightly lighter dark background for content */
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #FF4c24; /* Bright orange footer */
-            color: #131313; /* Dark text in footer */
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My Website</title>
 </head>
 <body>
-    <div class="header">
-        <h1>Albert Wu</h1>
-    </div>
-
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contacts.html">Contact</a>
-    </div>
+    <nav>
+        <div class="logo">MyLogo</div>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <div class="hero">
-        <div class="hero-content">
-            <h2>Welcome to My Personal Website</h2>
-            <p>Your journey to learning and innovation starts here.</p>
-            <a href="#resources" class="btn" style="background-color: #FF4c24; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Get Started</a>
+        <h1>Welcome to My Website</h1>
+    </div>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Information about the company.</p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="portfolio-grid">
+            <div class="item">Service 1</div>
+            <div class="item">Service 2</div>
+            <div class="item">Service 3</div>
         </div>
-    </div>
+    </section>
 
-    <div class="content" id="home">
-        <h2>About Me</h2>
-        <p>Hello! My name is Albert Wu, and I am a college student pursuing a degree in Computer Science. I have a passion for technology and enjoy learning about new advancements in the field. This website serves as a platform to share my journey, projects, and interests.</p>
-    </div>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Contact information goes here.</p>
+    </section>
 
-    <div class="footer">
-        <p>&copy; 2025 Albert Wu. All rights reserved.</p>
-    </div>
+    <footer>
+        <p>&copy; 2023 My Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('nav ul');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
