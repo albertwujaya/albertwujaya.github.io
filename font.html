@@ -3,47 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Font Category</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Font Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 16px;
+            background-color: #333;
+            color: white;
+        }
+        
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .font-preview {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        .font-preview-text {
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .helvetica { font-family: Helvetica, Arial, sans-serif; }
+        .times { font-family: "Times New Roman", Times, serif; }
+        .arial { font-family: Arial, sans-serif; }
+        .futura { font-family: Futura, "Trebuchet MS", Arial, sans-serif; }
+        .calibri { font-family: Calibri, "Segoe UI", sans-serif; }
+        .comic { font-family: "Comic Sans MS", cursive, sans-serif; }
+        .garamond { font-family: Garamond, "Palatino Linotype", serif; }
+        .verdana { font-family: Verdana, Geneva, sans-serif; }
+        .papyrus { font-family: Papyrus, fantasy, serif; }
+        .roboto { font-family: Roboto, "Segoe UI", sans-serif; }
+        
+        .card-body {
+            padding: 16px;
+        }
+        
+        .card-body p {
+            margin: 0 0 12px;
+            line-height: 1.5;
+            color: #333;
+        }
+        
+        .card-info {
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .card-info p {
+            margin: 5px 0;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="category-header">
-        <div class="category-icon font-icon">F</div>
-        <h1>Font</h1>
+    <div class="header">
+        <h1>Font Catalog</h1>
+        <p>A collection of popular fonts with descriptions and visual examples</p>
     </div>
     
-    <div class="description">
-        <p>Typography resources including various font families, typefaces, and text styling assets for design projects.</p>
+    <div class="card-container">
+        <!-- Helvetica -->
+        <div class="card">
+            <div class="card-header">
+                <h2>1. Helvetica</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text helvetica">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Dikenal dengan netralitasnya, Helvetica digunakan di logo NASA hingga Toyota. Font sans-serif ini memiliki x-height besar untuk keterbacaan optimal.</p>
+                <p>Diciptakan pada 1957 oleh Max Miedinger dan Eduard Hoffmann, Helvetica menjadi simbol desain modern karena keserbagunaannya dalam menyampaikan pesan formal maupun informal.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Sans-serif</p>
+                <p><strong>Created:</strong> 1957</p>
+                <p><strong>Designers:</strong> Max Miedinger & Eduard Hoffmann</p>
+            </div>
+        </div>
+        
+        <!-- Times New Roman -->
+        <div class="card">
+            <div class="card-header">
+                <h2>2. Times New Roman</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text times">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Font serif klasik dirancang untuk koran The Times (1932). Keunggulannya terletak pada legibility di ukuran kecil.</p>
+                <p>Dirancang oleh Stanley Morison dan Victor Lardent, font ini awalnya bertujuan mengoptimalkan tata letak koran dengan menghemat ruang tanpa mengorbankan keterbacaan.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Serif</p>
+                <p><strong>Created:</strong> 1932</p>
+                <p><strong>Designers:</strong> Stanley Morison & Victor Lardent</p>
+            </div>
+        </div>
+        
+        <!-- Arial -->
+        <div class="card">
+            <div class="card-header">
+                <h2>3. Arial</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text arial">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Alternatif Helvetica yang dikembangkan Monotype (1982). Populer di dokumen digital karena kompatibilitas lintas platform.</p>
+                <p>Didesain untuk bersaing dengan Helvetica, Arial memiliki x-height lebih tinggi dan lekukan yang lebih lunak, membuatnya lebih mudah dibaca di layar resolusi rendah.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Sans-serif</p>
+                <p><strong>Created:</strong> 1982</p>
+                <p><strong>Designer:</strong> Monotype</p>
+            </div>
+        </div>
+        
+        <!-- Futura -->
+        <div class="card">
+            <div class="card-header">
+                <h2>4. Futura</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text futura">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Font geometris ikonik (1927) yang menginspirasi desain Bauhaus. Karya Paul Renner ini menggunakan bentuk dasar lingkaran, segitiga, dan persegi untuk menciptakan estetika futuristik.</p>
+                <p>Dipakai di logo Volkswagen, Supreme, dan film 2001: A Space Odyssey. Meski kurang nyaman untuk teks panjang, Futura tetap populer di headline dan branding mewah.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Geometric Sans-serif</p>
+                <p><strong>Created:</strong> 1927</p>
+                <p><strong>Designer:</strong> Paul Renner</p>
+            </div>
+        </div>
+        
+        <!-- Calibri -->
+        <div class="card">
+            <div class="card-header">
+                <h2>5. Calibri</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text calibri">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Font sans-serif humanis, menggantikan Times New Roman sebagai default Microsoft Office sejak 2007. Dirancang oleh Lucas de Groot, Calibri mengadopsi gaya lekuk bulat dan spasi terbuka untuk mengurangi kelelahan mata di layar.</p>
+                <p>Font ini menjadi simbol transisi dari era cetak ke digital, dengan optimasi ClearType untuk tampilan LCD.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Humanist Sans-serif</p>
+                <p><strong>Created:</strong> 2004</p>
+                <p><strong>Designer:</strong> Lucas de Groot</p>
+            </div>
+        </div>
+        
+        <!-- Comic Sans -->
+        <div class="card">
+            <div class="card-header">
+                <h2>6. Comic Sans</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text comic">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Font kontroversial yang meniru tulisan tangan komik (1994). Didesain Vincent Connare untuk Microsoft Bob, font ini dikritik habis-habisan karena dianggap tidak profesional.</p>
+                <p>Justru banyak dipakai di pendidikan anak dan kampanye kesehatan mental. Psikolog menemukan Comic Sans meningkatkan keterbacaan bagi disleksia.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Casual Script</p>
+                <p><strong>Created:</strong> 1994</p>
+                <p><strong>Designer:</strong> Vincent Connare</p>
+            </div>
+        </div>
+        
+        <!-- Garamond -->
+        <div class="card">
+            <div class="card-header">
+                <h2>7. Garamond</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text garamond">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Font serif Renaissance (abad ke-16) yang masih relevan di era modern. Dinamai dari pengukir Prancis Claude Garamond, font ini memiliki serif anggun dan contrast stroke tinggi yang ideal untuk buku cetak.</p>
+                <p>Apple menggunakan varian Garamond Premier Pro di logo awalnya. Penelitian menunjukkan teks Garamond 12pt menghemat 24% tinta dibanding Times New Roman.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Old-Style Serif</p>
+                <p><strong>Created:</strong> 16th century</p>
+                <p><strong>Designer:</strong> Claude Garamond</p>
+            </div>
+        </div>
+        
+        <!-- Verdana -->
+        <div class="card">
+            <div class="card-header">
+                <h2>8. Verdana</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text verdana">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Font sans-serif dirancang Matthew Carter (1996) untuk keterbacaan di layar. Dengan x-height ekstra dan spasi huruf lebar, Verdana menjadi standar web sebelum era responsive design.</p>
+                <p>Dipakai Wikipedia hingga 2010, font ini optimal di resolusi bawah 100ppi. Kekurangannya: tampak "kekanakan" untuk dokumen bisnis.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Humanist Sans-serif</p>
+                <p><strong>Created:</strong> 1996</p>
+                <p><strong>Designer:</strong> Matthew Carter</p>
+            </div>
+        </div>
+        
+        <!-- Papyrus -->
+        <div class="card">
+            <div class="card-header">
+                <h2>9. Papyrus</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text papyrus">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Font bergaya Mesir kuno (1982) yang sering disalahgunakan. Diciptakan Chris Costello, Papyrus populer di poster spa dan usaha kecil karena kesan "alami".</p>
+                <p>Penggunaan di logo film Avatar (2009) memicu meme internet yang mengejeknya sebagai "font malas". Desainer menyarankan menggantinya dengan font etnik yang lebih autentik.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Decorative</p>
+                <p><strong>Created:</strong> 1982</p>
+                <p><strong>Designer:</strong> Chris Costello</p>
+            </div>
+        </div>
+        
+        <!-- Roboto -->
+        <div class="card">
+            <div class="card-header">
+                <h2>10. Roboto</h2>
+            </div>
+            <div class="font-preview">
+                <div class="font-preview-text roboto">AaBbCc</div>
+            </div>
+            <div class="card-body">
+                <p>Font sistem Android, menggabungkan geometris mekanis dengan kurva organik. Dikembangkan Google pada 2011, Roboto dirancang untuk antarmuka mobile dengan kepadatan informasi tinggi.</p>
+                <p>Karakteristik dualitasnya – rigid pada vertical stems namun fluid pada kurva – mencerminkan filosofi Material Design.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Type:</strong> Neo-grotesque Sans-serif</p>
+                <p><strong>Created:</strong> 2011</p>
+                <p><strong>Designer:</strong> Google</p>
+            </div>
+        </div>
     </div>
     
-    <div class="file-list">
-        <h2>Files (4)</h2>
-        
-        <div class="file-item">
-            <div class="file-icon font-file">F</div>
-            <div class="file-name">montserrat.ttf</div>
-            <div class="file-size">2.3 MB</div>
-        </div>
-        
-        <div class="file-item">
-            <div class="file-icon font-file">F</div>
-            <div class="file-name">roboto_family.zip</div>
-            <div class="file-size">5.7 MB</div>
-        </div>
-        
-        <div class="file-item">
-            <div class="file-icon font-file">F</div>
-            <div class="file-name">playfair_display.otf</div>
-            <div class="file-size">1.9 MB</div>
-        </div>
-        
-        <div class="file-item">
-            <div class="file-icon font-file">F</div>
-            <div class="file-name">open_sans.woff2</div>
-            <div class="file-size">0.8 MB</div>
-        </div>
-    </div>
-    
-    <a href="index.html" class="back-link">← Back to Categories</a>
+    <footer>
+        <p>Font Catalog © 2025 | All information compiled from typography resources</p>
+    </footer>
 </body>
 </html>

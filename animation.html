@@ -3,47 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation Category</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Animation File Formats Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 16px;
+            background-color: #4b6cb7;
+            color: white;
+            background-image: linear-gradient(to right, #4b6cb7, #182848);
+        }
+        
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .format-icon {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .gif-icon { background-color: #e0f7fa; }
+        .swf-icon { background-color: #ffecb3; }
+        .fla-icon { background-color: #ffccbc; }
+        .mov-icon { background-color: #e8eaf6; }
+        .mp4-icon { background-color: #e0f2f1; }
+        .apng-icon { background-color: #e8f5e9; }
+        .svg-icon { background-color: #f3e5f5; }
+        .tds-icon { background-color: #fce4ec; }
+        .fbx-icon { background-color: #ede7f6; }
+        .gltf-icon { background-color: #fff3e0; }
+        
+        .card-body {
+            padding: 16px;
+        }
+        
+        .card-body p {
+            margin: 0 0 12px;
+            line-height: 1.5;
+            color: #333;
+        }
+        
+        .card-info {
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .card-info p {
+            margin: 5px 0;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="category-header">
-        <div class="category-icon animation-icon">An</div>
-        <h1>Animation</h1>
+    <div class="header">
+        <h1>Animation File Formats</h1>
+        <p>A comprehensive guide to common animation formats and their applications</p>
     </div>
     
-    <div class="description">
-        <p>Motion graphics and animated elements including loaders, transitions, character animations, and interactive UI components.</p>
+    <div class="card-container">
+        <!-- GIF -->
+        <div class="card">
+            <div class="card-header">
+                <h2>1. GIF</h2>
+            </div>
+            <div class="format-icon gif-icon">
+                GIF
+            </div>
+            <div class="card-body">
+                <p>Sebagai format animasi bitmap paling dasar, GIF membatasi palet warna hingga 256 warna namun tetap populer untuk animasi sederhana.</p>
+                <p>Kemampuannya menggabungkan beberapa frame dalam satu file membuatnya ideal untuk konten web ringan seperti meme dan ikon animasi, didukung oleh kompatibilitas universal di berbagai platform.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> Graphics Interchange Format</p>
+                <p><strong>Type:</strong> Bitmap Animation</p>
+                <p><strong>Best for:</strong> Web animations, memes, simple animations</p>
+            </div>
+        </div>
+        
+        <!-- SWF -->
+        <div class="card">
+            <div class="card-header">
+                <h2>2. SWF</h2>
+            </div>
+            <div class="format-icon swf-icon">
+                SWF
+            </div>
+            <div class="card-body">
+                <p>Dikembangkan sebagai format utama Adobe Flash, SWF memungkinkan pembuatan animasi interaktif kompleks untuk web.</p>
+                <p>Format ini pernah menjadi standar untuk game browser, banner iklan, dan konten edukasi interaktif sebelum era HTML5 menggantikan teknologi Flash.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> Small Web Format</p>
+                <p><strong>Type:</strong> Vector Animation</p>
+                <p><strong>Best for:</strong> Interactive web content (legacy)</p>
+            </div>
+        </div>
+        
+        <!-- FLA -->
+        <div class="card">
+            <div class="card-header">
+                <h2>3. FLA</h2>
+            </div>
+            <div class="format-icon fla-icon">
+                FLA
+            </div>
+            <div class="card-body">
+                <p>Merupakan file sumber dalam ekosistem Adobe Flash, FLA menyimpan seluruh aset dan logika animasi dalam bentuk editable.</p>
+                <p>Desainer menggunakan format ini selama proses pengembangan sebelum mengekspornya ke SWF untuk distribusi akhir.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> Flash Authoring File</p>
+                <p><strong>Type:</strong> Source Animation File</p>
+                <p><strong>Best for:</strong> Flash development (source files)</p>
+            </div>
+        </div>
+        
+        <!-- MOV -->
+        <div class="card">
+            <div class="card-header">
+                <h2>4. MOV</h2>
+            </div>
+            <div class="format-icon mov-icon">
+                MOV
+            </div>
+            <div class="card-body">
+                <p>Lebih dari sekadar format video, MOV mendukung animasi berkualitas profesional dengan multiple tracks.</p>
+                <p>Kemampuannya menyimpan berbagai lapisan media membuatnya cocok untuk produksi animasi 2D/3D di lingkungan kerja profesional.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> QuickTime Video Format</p>
+                <p><strong>Type:</strong> Video/Animation Container</p>
+                <p><strong>Best for:</strong> Professional animation production</p>
+            </div>
+        </div>
+        
+        <!-- MP4 -->
+        <div class="card">
+            <div class="card-header">
+                <h2>5. MP4</h2>
+            </div>
+            <div class="format-icon mp4-icon">
+                MP4
+            </div>
+            <div class="card-body">
+                <p>Meski dikenal sebagai format video, MP4 juga efektif untuk menyimpan animasi 3D yang telah dirender.</p>
+                <p>Kombinasi kompresi efisien dan kualitas gambar yang terjaga menjadikannya pilihan untuk presentasi animasi dan konten karakter 3D.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> MPEG-4 Part 14</p>
+                <p><strong>Type:</strong> Video/Animation Container</p>
+                <p><strong>Best for:</strong> Rendered 3D animations, presentations</p>
+            </div>
+        </div>
+        
+        <!-- APNG -->
+        <div class="card">
+            <div class="card-header">
+                <h2>6. APNG</h2>
+            </div>
+            <div class="format-icon apng-icon">
+                APNG
+            </div>
+            <div class="card-body">
+                <p>Sebagai penyempurnaan GIF, APNG menawarkan animasi dengan kedalaman warna 24-bit dan transparansi alpha penuh.</p>
+                <p>Format ini menjadi solusi modern untuk animasi web yang membutuhkan kualitas visual tinggi tanpa artefak kompresi.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> Animated Portable Network Graphics</p>
+                <p><strong>Type:</strong> Bitmap Animation</p>
+                <p><strong>Best for:</strong> High-quality web animations</p>
+            </div>
+        </div>
+        
+        <!-- SVG Animation -->
+        <div class="card">
+            <div class="card-header">
+                <h2>7. SVG Animation</h2>
+            </div>
+            <div class="format-icon svg-icon">
+                SVG
+            </div>
+            <div class="card-body">
+                <p>Memanfaatkan kemampuan vektor berbasis XML, SVG dapat dianimasi melalui scripting atau SMIL.</p>
+                <p>Keunggulan utamanya terletak pada skalabilitas sempurna dan ukuran file minimal, ideal untuk UI/UX web yang dinamis.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> Scalable Vector Graphics with SMIL/JavaScript</p>
+                <p><strong>Type:</strong> Vector Animation</p>
+                <p><strong>Best for:</strong> UI/UX animations, responsive web animations</p>
+            </div>
+        </div>
+        
+        <!-- 3DS -->
+        <div class="card">
+            <div class="card-header">
+                <h2>8. 3DS</h2>
+            </div>
+            <div class="format-icon tds-icon">
+                3DS
+            </div>
+            <div class="card-body">
+                <p>Sebagai format warisan Autodesk 3D Studio, 3DS menyimpan data mesh, tekstur, dan keyframe animasi dasar.</p>
+                <p>Meski sudah tua, format ini masih digunakan dalam pertukaran aset 3D sederhana.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> 3D Studio File Format</p>
+                <p><strong>Type:</strong> 3D Animation</p>
+                <p><strong>Best for:</strong> Basic 3D model exchange</p>
+            </div>
+        </div>
+        
+        <!-- FBX -->
+        <div class="card">
+            <div class="card-header">
+                <h2>9. FBX</h2>
+            </div>
+            <div class="format-icon fbx-icon">
+                FBX
+            </div>
+            <div class="card-body">
+                <p>Merupakan format pertukaran animasi 3D paling komprehensif saat ini, FBX mendukung rigging karakter, morph target, dan seluruh pipeline animasi.</p>
+                <p>Standar industri untuk produksi game dan film animasi.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> Filmbox</p>
+                <p><strong>Type:</strong> 3D Animation</p>
+                <p><strong>Best for:</strong> Game development, film production</p>
+            </div>
+        </div>
+        
+        <!-- GLTF -->
+        <div class="card">
+            <div class="card-header">
+                <h2>10. GLTF</h2>
+            </div>
+            <div class="format-icon gltf-icon">
+                GLTF
+            </div>
+            <div class="card-body">
+                <p>Dijuluki "JPEG untuk 3D", GLTF dirancang khusus untuk streaming efisien model dan animasi 3D.</p>
+                <p>Format ini optimal untuk aplikasi real-time seperti AR/VR dan visualisasi web berbasis WebGL.</p>
+            </div>
+            <div class="card-info">
+                <p><strong>Full Name:</strong> GL Transmission Format</p>
+                <p><strong>Type:</strong> 3D Animation</p>
+                <p><strong>Best for:</strong> WebGL, AR/VR, real-time 3D</p>
+            </div>
+        </div>
     </div>
     
-    <div class="file-list">
-        <h2>Files (4)</h2>
-        
-        <div class="file-item">
-            <div class="file-icon animation-file">An</div>
-            <div class="file-name">loading_spinner.gif</div>
-            <div class="file-size">0.7 MB</div>
-        </div>
-        
-        <div class="file-item">
-            <div class="file-icon animation-file">An</div>
-            <div class="file-name">logo_reveal.json</div>
-            <div class="file-size">1.2 MB</div>
-        </div>
-        
-        <div class="file-item">
-            <div class="file-icon animation-file">An</div>
-            <div class="file-name">character_walk_cycle.lottie</div>
-            <div class="file-size">2.5 MB</div>
-        </div>
-        
-        <div class="file-item">
-            <div class="file-icon animation-file">An</div>
-            <div class="file-name">ui_transitions.json</div>
-            <div class="file-size">1.8 MB</div>
-        </div>
-    </div>
-    
-    <a href="index.html" class="back-link">← Back to Categories</a>
+    <footer>
+        <p>Animation File Formats Catalog © 2025 | All information compiled from animation resources</p>
+    </footer>
 </body>
 </html>
