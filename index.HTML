@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav>
-        <div class="logo">MyLogo</div>
+        <div class="logo">MyPortfolio</div>
         <div class="menu-toggle">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -16,51 +16,110 @@
         </div>
         <ul>
             <li><a href="#about">About</a></li>
+            <li><a href="#categories">Categories</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <div class="hero">
-        <h1>Welcome to My Website</h1>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Web Developer & Designer</p>
     </div>
 
     <section id="about">
-        <h2>About Us</h2>
-        <p>Information about the company.</p>
+        <h2>About Me</h2>
+        <p>I am a passionate web developer and designer with expertise in creating responsive and user-friendly websites. With a focus on clean design and efficient code, I deliver high-quality web solutions that meet client needs and exceed expectations.</p>
     </section>
 
+    <section id="categories">
+        <h2>Categories</h2>
+        <div class="categories-container">
+            <a href="video-category.html" class="category-card">
+                <div class="category-icon video-icon">V</div>
+                <h3>Video</h3>
+                <p>High-quality video content including tutorials, demonstrations, interviews, and project showcases in various formats.</p>
+                <div class="card-files">
+                    <span>12 files</span>
+                    <span class="view-more">View Files</span>
+                </div>
+            </a>
+            
+            <a href="audio-category.html" class="category-card">
+                <div class="category-icon audio-icon">A</div>
+                <h3>Audio</h3>
+                <p>Sound files including music tracks, podcasts, voice recordings, sound effects, and narration in multiple formats.</p>
+                <div class="card-files">
+                    <span>8 files</span>
+                    <span class="view-more">View Files</span>
+                </div>
+            </a>
+            
+            <a href="image-category.html" class="category-card">
+                <div class="category-icon image-icon">I</div>
+                <h3>Image</h3>
+                <p>Visual assets including photographs, illustrations, graphics, logos, and digital artwork in various formats.</p>
+                <div class="card-files">
+                    <span>6 files</span>
+                    <span class="view-more">View Files</span>
+                </div>
+            </a>
+            
+            <a href="font-category.html" class="category-card">
+                <div class="category-icon font-icon">F</div>
+                <h3>Font</h3>
+                <p>Typography resources including various font families, typefaces, and text styling assets for design projects.</p>
+                <div class="card-files">
+                    <span>4 files</span>
+                    <span class="view-more">View Files</span>
+                </div>
+            </a>
+
+            <a href="animation-category.html" class="category-card">
+                <div class="category-icon animation-icon">An</div>
+                <h3>Animation</h3>
+                <p>Motion graphics and animated elements including loaders, transitions, character animations, and interactive UI components.</p>
+                <div class="card-files">
+                    <span>4 files</span>
+                    <span class="view-more">View Files</span>
+                </div>
+            </a>
+        </div>
+    </section>  
+
     <section id="projects">
-        <h2>Our Projects</h2>
+        <h2>My Projects</h2>
         <div class="portfolio-grid">
             <div class="item">
-                Project 1
+                UTS Website
                 <div class="drive-link">
-                    <a href="https://docs.google.com/document/d/1bWnP6afNSgATDSf_tl9pcef8YmWuty48/edit?usp=sharing&ouid=104647360101321954626&rtpof=true&sd=true" target="_blank">View on Drive</a>
+                    <a href="https://docs.google.com/document/d/1bWnP6afNSgATDSf_tl9pcef8YmWuty48/edit?usp=sharing&ouid=104647360101321954626&rtpof=true&sd=true" target="_blank">View Project</a>
                 </div>
             </div>
             <div class="item">
-                Project 2
+                UI/UX Design
                 <div class="drive-link">
-                    <a href="#" target="_blank">View on Drive</a>
+                    <a href="#" target="_blank">View Project</a>
                 </div>
             </div>
             <div class="item">
-                Project 3
+                Mobile App
                 <div class="drive-link">
-                    <a href="#" target="_blank">View on Drive</a>
+                    <a href="#" target="_blank">View Project</a>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Contact information goes here.</p>
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out to me for collaboration or inquiries. I'm always open to discussing new projects and creative ideas.</p>
+        <p>Email: contact@myportfolio.com</p>
+        <p>Phone: +1 (123) 456-7890</p>
     </section>
 
     <footer>
-        <p>&copy; 2023 My Website. All rights reserved.</p>
+        <p>&copy; 2025 MyPortfolio. All rights reserved.</p>
     </footer>
 
     <script>
@@ -70,6 +129,32 @@
 
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Check if it's a page section link (starts with #)
+                if (targetId.startsWith('#')) {
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                } else {
+                    // It's an external link, let it navigate normally
+                    window.location.href = targetId;
+                }
+            });
         });
     </script>
 </body>
