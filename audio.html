@@ -469,6 +469,10 @@
                     <h3 id="modalFormatTitle"></h3>
                     <p id="modalFormatDescription"></p>
                 </div>
+                <div class="play-button" id="modalPlayButton">
+                    <div class="play-icon"></div>
+                    <div class="pause-icon"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -485,6 +489,7 @@
         const closeBtn = document.querySelector('.close-btn');
         const formatCards = document.querySelectorAll('.format-card');
         const playButtons = document.querySelectorAll('.play-button');
+        const modalPlayButton = document.getElementById('modalPlayButton');
         
         // Audio context for visualizer
         let audioContext;
@@ -590,6 +595,17 @@
                         console.error('Error playing audio:', err);
                     });
             });
+        });
+        
+        // Add click event to the modal play button
+        modalPlayButton.addEventListener('click', function() {
+            if (modalAudio.paused) {
+                modalAudio.play();
+                drawVisualizer();
+            } else {
+                modalAudio.pause();
+                stopVisualizer();
+            }
         });
         
         // Close the modal when clicking the close button
