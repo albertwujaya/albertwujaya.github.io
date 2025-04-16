@@ -3,64 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation File Formats Catalog</title>
+    <title>Animation Category</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
             margin: 0;
             padding: 20px;
+            background-color: #f5f5f5;
         }
         
-        .header {
-            text-align: center;
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-right: 15px;
+        }
+        
+        .animation-icon {
+            background-color: #9b59b6;
+        }
+        
+        .description {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Format cards styles */
+        .format-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
             margin-bottom: 30px;
         }
         
-        .header h1 {
-            color: #333;
-            font-size: 2.5rem;
+        .format-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            height: auto;
+            overflow: hidden;
+        }
+        
+        .format-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .format-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #9b59b6;
             margin-bottom: 10px;
         }
         
-        .header p {
-            color: #666;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-        
-        .card-header {
-            padding: 16px;
-            background-color: #4b6cb7;
+        .format-description {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(155, 89, 182, 0.95);
             color: white;
-            background-image: linear-gradient(to right, #4b6cb7, #182848);
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            border-radius: 8px;
+            z-index: 2;
         }
         
-        .card-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
+        .format-card:hover .format-description {
+            opacity: 1;
         }
         
         .format-icon {
@@ -69,13 +114,32 @@
             align-items: center;
             justify-content: center;
             background-color: #f0f0f0;
-            border-bottom: 1px solid #ddd;
-            padding: 8px;
+            border-radius: 4px;
+            margin-top: 10px;
             font-size: 2.5rem;
             font-weight: bold;
             color: #333;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        }
+        
+        /* New Animation Preview Styles */
+        .format-animation {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f8f8;
+            border-radius: 6px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .format-animation img,
+        .format-animation video,
+        .format-animation svg,
+        .format-animation object {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
         }
         
         .gif-icon { background-color: #e0f7fa; }
@@ -89,236 +153,613 @@
         .fbx-icon { background-color: #ede7f6; }
         .gltf-icon { background-color: #fff3e0; }
         
-        .card-body {
-            padding: 16px;
-        }
-        
-        .card-body p {
-            margin: 0 0 12px;
-            line-height: 1.5;
+        .section-title {
+            font-size: 1.8em;
             color: #333;
+            margin: 40px 0 20px 0;
+            border-bottom: 2px solid #9b59b6;
+            padding-bottom: 10px;
         }
         
-        .card-info {
-            background-color: #f9f9f9;
-            border-top: 1px solid #eee;
-            padding: 12px 16px;
-            font-size: 0.9rem;
-            color: #666;
+        /* Animation Preview Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
         }
         
-        .card-info p {
-            margin: 5px 0;
+        .modal-content {
+            margin: 5% auto;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            animation: modalopen 0.5s;
         }
         
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .modal-header {
+            background-color: #9b59b6;
+            color: white;
+            padding: 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .close-btn {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-btn:hover {
+            color: #ddd;
+        }
+        
+        .modal-body {
+            padding: 20px;
+            background-color: white;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        
+        .modal-preview {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Animation File Formats</h1>
-        <p>A comprehensive guide to common animation formats and their applications</p>
+    <div class="category-header">
+        <div class="category-icon animation-icon">A</div>
+        <h1>Animation</h1>
     </div>
     
-    <div class="card-container">
+    <div class="description">
+        <p>A comprehensive guide to animation file formats for web, multimedia, video production, and 3D content creation across various platforms.</p>
+    </div>
+    
+    <h2 class="section-title">Animation File Formats</h2>
+    <p>Each card represents an animation format. Click on a card to view detailed specifications or hover to learn more about the format's characteristics.</p>
+    
+    <div class="format-cards">
         <!-- GIF -->
-        <div class="card">
-            <div class="card-header">
-                <h2>1. GIF</h2>
+        <div class="format-card" data-format="GIF" data-title="Graphics Interchange Format">
+            <div class="format-title">GIF</div>
+            <p>Graphics Interchange Format</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <img src="animations/Delete Never Mind GIF by vewn.gif" alt="GIF Animation Example">
             </div>
             <div class="format-icon gif-icon">
                 GIF
             </div>
-            <div class="card-body">
-                <p>Sebagai format animasi bitmap paling dasar, GIF membatasi palet warna hingga 256 warna namun tetap populer untuk animasi sederhana.</p>
-                <p>Kemampuannya menggabungkan beberapa frame dalam satu file membuatnya ideal untuk konten web ringan seperti meme dan ikon animasi, didukung oleh kompatibilitas universal di berbagai platform.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> Graphics Interchange Format</p>
-                <p><strong>Type:</strong> Bitmap Animation</p>
-                <p><strong>Best for:</strong> Web animations, memes, simple animations</p>
+            <div class="format-description">
+                <h3>GIF (Graphics Interchange Format)</h3>
+                <p>As the most basic bitmap animation format, GIF limits color palettes to 256 colors but remains popular for simple animations.</p>
+                <p>Its ability to combine multiple frames into one file makes it ideal for lightweight web content like memes and animated icons, supported by universal compatibility across platforms.</p>
             </div>
         </div>
         
         <!-- SWF -->
-        <div class="card">
-            <div class="card-header">
-                <h2>2. SWF</h2>
+        <div class="format-card" data-format="SWF" data-title="Small Web Format">
+            <div class="format-title">SWF</div>
+            <p>Small Web Format</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <object type="application/x-shockwave-flash" data="animations/example.swf">
+                    <param name="movie" value="animations/Delete-Never-Mind-GIF-by-vewn.swf"><embed src="animations/example.swf">
+                    <p>Flash is not supported in modern browsers</p>
+                </object>
             </div>
             <div class="format-icon swf-icon">
                 SWF
             </div>
-            <div class="card-body">
-                <p>Dikembangkan sebagai format utama Adobe Flash, SWF memungkinkan pembuatan animasi interaktif kompleks untuk web.</p>
-                <p>Format ini pernah menjadi standar untuk game browser, banner iklan, dan konten edukasi interaktif sebelum era HTML5 menggantikan teknologi Flash.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> Small Web Format</p>
-                <p><strong>Type:</strong> Vector Animation</p>
-                <p><strong>Best for:</strong> Interactive web content (legacy)</p>
+            <div class="format-description">
+                <h3>SWF (Small Web Format)</h3>
+                <p>Developed as Adobe Flash's primary format, SWF enables the creation of complex interactive animations for the web.</p>
+                <p>This format was once the standard for browser games, advertising banners, and interactive educational content before HTML5 superseded Flash technology.</p>
             </div>
         </div>
         
         <!-- FLA -->
-        <div class="card">
-            <div class="card-header">
-                <h2>3. FLA</h2>
+        <div class="format-card" data-format="FLA" data-title="Flash Authoring File">
+            <div class="format-title">FLA</div>
+            <p>Flash Authoring File</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <img src="animations/Delete Never Mind GIF by vewn [MConverter.eu].flv" alt="FLA File Preview">
             </div>
             <div class="format-icon fla-icon">
                 FLA
             </div>
-            <div class="card-body">
-                <p>Merupakan file sumber dalam ekosistem Adobe Flash, FLA menyimpan seluruh aset dan logika animasi dalam bentuk editable.</p>
-                <p>Desainer menggunakan format ini selama proses pengembangan sebelum mengekspornya ke SWF untuk distribusi akhir.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> Flash Authoring File</p>
-                <p><strong>Type:</strong> Source Animation File</p>
-                <p><strong>Best for:</strong> Flash development (source files)</p>
+            <div class="format-description">
+                <h3>FLA (Flash Authoring File)</h3>
+                <p>As the source file in the Adobe Flash ecosystem, FLA stores all animation assets and logic in editable form.</p>
+                <p>Designers used this format during the development process before exporting to SWF for final distribution.</p>
             </div>
         </div>
         
         <!-- MOV -->
-        <div class="card">
-            <div class="card-header">
-                <h2>4. MOV</h2>
+        <div class="format-card" data-format="MOV" data-title="QuickTime Video Format">
+            <div class="format-title">MOV</div>
+            <p>QuickTime Video Format</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <video controls muted>
+                    <source src="animations/Delete-Never-Mind-GIF-by-vewn.mov" type="video/quicktime">
+                    Your browser does not support MOV videos.
+                </video>
             </div>
             <div class="format-icon mov-icon">
                 MOV
             </div>
-            <div class="card-body">
-                <p>Lebih dari sekadar format video, MOV mendukung animasi berkualitas profesional dengan multiple tracks.</p>
-                <p>Kemampuannya menyimpan berbagai lapisan media membuatnya cocok untuk produksi animasi 2D/3D di lingkungan kerja profesional.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> QuickTime Video Format</p>
-                <p><strong>Type:</strong> Video/Animation Container</p>
-                <p><strong>Best for:</strong> Professional animation production</p>
+            <div class="format-description">
+                <h3>MOV (QuickTime Video Format)</h3>
+                <p>More than just a video format, MOV supports professional-quality animation with multiple tracks.</p>
+                <p>Its ability to store various media layers makes it suitable for 2D/3D animation production in professional work environments.</p>
             </div>
         </div>
         
         <!-- MP4 -->
-        <div class="card">
-            <div class="card-header">
-                <h2>5. MP4</h2>
+        <div class="format-card" data-format="MP4" data-title="MPEG-4 Part 14">
+            <div class="format-title">MP4</div>
+            <p>MPEG-4 Part 14</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <video controls muted>
+                    <source src="animations/Delete-Never-Mind-GIF-by-vewn.mp4" type="video/mp4">
+                    Your browser does not support MP4 videos.
+                </video>
             </div>
             <div class="format-icon mp4-icon">
                 MP4
             </div>
-            <div class="card-body">
-                <p>Meski dikenal sebagai format video, MP4 juga efektif untuk menyimpan animasi 3D yang telah dirender.</p>
-                <p>Kombinasi kompresi efisien dan kualitas gambar yang terjaga menjadikannya pilihan untuk presentasi animasi dan konten karakter 3D.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> MPEG-4 Part 14</p>
-                <p><strong>Type:</strong> Video/Animation Container</p>
-                <p><strong>Best for:</strong> Rendered 3D animations, presentations</p>
+            <div class="format-description">
+                <h3>MP4 (MPEG-4 Part 14)</h3>
+                <p>Though known as a video format, MP4 is also effective for storing rendered 3D animations.</p>
+                <p>The combination of efficient compression and preserved image quality makes it the choice for animation presentations and 3D character content.</p>
             </div>
         </div>
         
         <!-- APNG -->
-        <div class="card">
-            <div class="card-header">
-                <h2>6. APNG</h2>
+        <div class="format-card" data-format="APNG" data-title="Animated Portable Network Graphics">
+            <div class="format-title">APNG</div>
+            <p>Animated Portable Network Graphics</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <img src="animations/Delete Never Mind GIF by vewn.apng" alt="APNG Animation Example">
             </div>
             <div class="format-icon apng-icon">
                 APNG
             </div>
-            <div class="card-body">
-                <p>Sebagai penyempurnaan GIF, APNG menawarkan animasi dengan kedalaman warna 24-bit dan transparansi alpha penuh.</p>
-                <p>Format ini menjadi solusi modern untuk animasi web yang membutuhkan kualitas visual tinggi tanpa artefak kompresi.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> Animated Portable Network Graphics</p>
-                <p><strong>Type:</strong> Bitmap Animation</p>
-                <p><strong>Best for:</strong> High-quality web animations</p>
+            <div class="format-description">
+                <h3>APNG (Animated Portable Network Graphics)</h3>
+                <p>As an improvement over GIF, APNG offers animation with 24-bit color depth and full alpha transparency.</p>
+                <p>This format provides a modern solution for web animations requiring high visual quality without compression artifacts.</p>
             </div>
         </div>
         
         <!-- SVG Animation -->
-        <div class="card">
-            <div class="card-header">
-                <h2>7. SVG Animation</h2>
+        <div class="format-card" data-format="SVG" data-title="Scalable Vector Graphics with SMIL/JavaScript">
+            <div class="format-title">SVG Animation</div>
+            <p>Scalable Vector Graphics with SMIL/JavaScript</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <img src="animations/Delete-Never-Mind-GIF-by-vewn.svg" alt="SVG Animation" />
+                <svg width="100%" height="100%" viewBox="0 0 200 100">
+                    <circle cx="50" cy="50" r="20" fill="#9b59b6">
+                        <animate attributeName="cx" from="50" to="150" dur="2s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
             </div>
             <div class="format-icon svg-icon">
                 SVG
             </div>
-            <div class="card-body">
-                <p>Memanfaatkan kemampuan vektor berbasis XML, SVG dapat dianimasi melalui scripting atau SMIL.</p>
-                <p>Keunggulan utamanya terletak pada skalabilitas sempurna dan ukuran file minimal, ideal untuk UI/UX web yang dinamis.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> Scalable Vector Graphics with SMIL/JavaScript</p>
-                <p><strong>Type:</strong> Vector Animation</p>
-                <p><strong>Best for:</strong> UI/UX animations, responsive web animations</p>
+            <div class="format-description">
+                <h3>SVG Animation (Scalable Vector Graphics)</h3>
+                <p>Leveraging XML-based vector capabilities, SVG can be animated through scripting or SMIL.</p>
+                <p>Its main advantage lies in perfect scalability and minimal file size, ideal for dynamic UI/UX web elements.</p>
             </div>
         </div>
         
         <!-- 3DS -->
-        <div class="card">
-            <div class="card-header">
-                <h2>8. 3DS</h2>
+        <div class="format-card" data-format="3DS" data-title="3D Studio File Format">
+            <div class="format-title">3DS</div>
+            <p>3D Studio File Format</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <img src="animations/Delete Never Mind GIF by vewn.3ds" alt="3DS File Preview">
             </div>
             <div class="format-icon tds-icon">
                 3DS
             </div>
-            <div class="card-body">
-                <p>Sebagai format warisan Autodesk 3D Studio, 3DS menyimpan data mesh, tekstur, dan keyframe animasi dasar.</p>
-                <p>Meski sudah tua, format ini masih digunakan dalam pertukaran aset 3D sederhana.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> 3D Studio File Format</p>
-                <p><strong>Type:</strong> 3D Animation</p>
-                <p><strong>Best for:</strong> Basic 3D model exchange</p>
+            <div class="format-description">
+                <h3>3DS (3D Studio File Format)</h3>
+                <p>As a legacy format from Autodesk 3D Studio, 3DS stores mesh data, textures, and basic keyframe animations.</p>
+                <p>Though dated, this format is still used for simple 3D asset exchange.</p>
             </div>
         </div>
         
         <!-- FBX -->
-        <div class="card">
-            <div class="card-header">
-                <h2>9. FBX</h2>
+        <div class="format-card" data-format="FBX" data-title="Filmbox">
+            <div class="format-title">FBX</div>
+            <p>Filmbox</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <img src="animations/Delete Never Mind GIF by vewn.fbx" alt="FBX File Preview">
             </div>
             <div class="format-icon fbx-icon">
                 FBX
             </div>
-            <div class="card-body">
-                <p>Merupakan format pertukaran animasi 3D paling komprehensif saat ini, FBX mendukung rigging karakter, morph target, dan seluruh pipeline animasi.</p>
-                <p>Standar industri untuk produksi game dan film animasi.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> Filmbox</p>
-                <p><strong>Type:</strong> 3D Animation</p>
-                <p><strong>Best for:</strong> Game development, film production</p>
+            <div class="format-description">
+                <h3>FBX (Filmbox)</h3>
+                <p>As today's most comprehensive 3D animation exchange format, FBX supports character rigging, morph targets, and the entire animation pipeline.</p>
+                <p>It's the industry standard for game production and animated films.</p>
             </div>
         </div>
         
         <!-- GLTF -->
-        <div class="card">
-            <div class="card-header">
-                <h2>10. GLTF</h2>
+        <div class="format-card" data-format="GLTF" data-title="GL Transmission Format">
+            <div class="format-title">GLTF</div>
+            <p>GL Transmission Format</p>
+            <!-- Add animation example here -->
+            <div class="format-animation">
+                <img src="animations/Delete Never Mind GIF by vewn.gltf" alt="GLTF File Preview">
             </div>
             <div class="format-icon gltf-icon">
                 GLTF
             </div>
-            <div class="card-body">
-                <p>Dijuluki "JPEG untuk 3D", GLTF dirancang khusus untuk streaming efisien model dan animasi 3D.</p>
-                <p>Format ini optimal untuk aplikasi real-time seperti AR/VR dan visualisasi web berbasis WebGL.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Full Name:</strong> GL Transmission Format</p>
-                <p><strong>Type:</strong> 3D Animation</p>
-                <p><strong>Best for:</strong> WebGL, AR/VR, real-time 3D</p>
+            <div class="format-description">
+                <h3>GLTF (GL Transmission Format)</h3>
+                <p>Nicknamed the "JPEG of 3D," GLTF is specifically designed for efficient streaming of 3D models and animations.</p>
+                <p>This format is optimal for real-time applications such as AR/VR and WebGL-based web visualizations.</p>
             </div>
         </div>
     </div>
     
-    <footer>
-        <p>Animation File Formats Catalog © 2025 | All information compiled from animation resources</p>
-    </footer>
-</body>
-</html>
+    <!-- Animation Preview Modal -->
+    <div id="animationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Format Specifications</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="formatDetails">
+                    <!-- Content will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <a href="../index.html" class="back-link">← Back to Categories</a>
+
+    <script>
+        // Get the modal elements
+        const modal = document.getElementById('animationModal');
+        const formatDetails = document.getElementById('formatDetails');
+        const modalTitle = document.querySelector('.modal-title');
+        const closeBtn = document.querySelector('.close-btn');
+        const formatCards = document.querySelectorAll('.format-card');
+        
+        // Format specifications
+        const formatSpecs = {
+            'GIF': {
+                title: 'Graphics Interchange Format (GIF)',
+                specs: `
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li><strong>Type:</strong> Bitmap Animation</li>
+                        <li><strong>Color Depth:</strong> 8-bit (256 colors)</li>
+                        <li><strong>Transparency:</strong> Single-level (binary)</li>
+                        <li><strong>Compression:</strong> LZW lossless compression</li>
+                        <li><strong>Max Resolution:</strong> 65536 × 65536 pixels</li>
+                        <li><strong>Platform Support:</strong> Universal (all browsers and devices)</li>
+                    </ul>
+                    
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>Simple to create and implement</li>
+                        <li>Universal compatibility</li>
+                        <li>Small file size for simple animations</li>
+                        <li>No plugin requirements</li>
+                    </ul>
+                    
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li>Limited to 256 colors per frame</li>
+                        <li>No sound support</li>
+                        <li>Can become large with complex animations</li>
+                        <li>Binary transparency only (no alpha channels)</li>
+                    </ul>
+                    
+                    <h3>Best Applications</h3>
+                    <ul>
+                        <li>Simple web animations</li>
+                        <li>Animated icons and UI elements</li>
+                        <li>Social media content and memes</li>
+                        <li>Simple looping animations</li>
+                    </ul>
+                `
+            },
+            'SWF': {
+                title: 'Small Web Format (SWF)',
+                specs: `
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li><strong>Type:</strong> Vector/Bitmap Animation Container</li>
+                        <li><strong>Color Depth:</strong> 32-bit (millions of colors with alpha)</li>
+                        <li><strong>Interactivity:</strong> Full ActionScript support</li>
+                        <li><strong>Audio:</strong> MP3, AAC, WAV support</li>
+                        <li><strong>Video:</strong> H.263, H.264 support</li>
+                        <li><strong>Platform Support:</strong> Legacy (requires Flash Player)</li>
+                    </ul>
+                    
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>Complex animation capabilities</li>
+                        <li>Full interactivity support</li>
+                        <li>Relatively small file size for complex animations</li>
+                        <li>Complete multimedia integration (audio, video)</li>
+                    </ul>
+                    
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li>Flash Player discontinued (2020)</li>
+                        <li>Security vulnerabilities</li>
+                        <li>Not supported on modern browsers</li>
+                        <li>Limited mobile support</li>
+                    </ul>
+                    
+                    <h3>Best Applications</h3>
+                    <ul>
+                        <li>Legacy interactive web content</li>
+                        <li>Archive only - no longer recommended for new projects</li>
+                        <li>Historical reference for animation techniques</li>
+                    </ul>
+                `
+            },
+            'FLA': {
+                title: 'Flash Authoring File (FLA)',
+                specs: `
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li><strong>Type:</strong> Source Animation File</li>
+                        <li><strong>Supported Elements:</strong> Vector graphics, bitmaps, text, symbols</li>
+                        <li><strong>Animation:</strong> Timeline-based with keyframes</li>
+                        <li><strong>Scripting:</strong> ActionScript 1.0, 2.0, 3.0</li>
+                        <li><strong>Platform Support:</strong> Adobe Flash/Animate only</li>
+                    </ul>
+                    
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>Full editability of all elements</li>
+                        <li>Complete animation controls</li>
+                        <li>Asset library and symbol management</li>
+                        <li>Integrated development environment</li>
+                    </ul>
+                    
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li>Proprietary format (requires Adobe software)</li>
+                        <li>Large file sizes</li>
+                        <li>Cannot be directly used on web (requires export)</li>
+                        <li>Legacy technology</li>
+                    </ul>
+                    
+                    <h3>Best Applications</h3>
+                    <ul>
+                        <li>Animation source files</li>
+                        <li>Flash/Animate project development</li>
+                        <li>Animation archiving</li>
+                    </ul>
+                `
+            },
+            'MOV': {
+                title: 'QuickTime Video Format (MOV)',
+                specs: `
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li><strong>Type:</strong> Video/Animation Container</li>
+                        <li><strong>Color Depth:</strong> Up to 32-bit (millions of colors with alpha)</li>
+                        <li><strong>Codecs:</strong> ProRes, Animation, H.264, and others</li>
+                        <li><strong>Metadata:</strong> Extensive support for custom metadata</li>
+                        <li><strong>Layers:</strong> Multiple track support</li>
+                        <li><strong>Platform Support:</strong> Strong on Apple ecosystem, cross-platform with QuickTime</li>
+                    </ul>
+                    
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>High-quality animation encoding</li>
+                        <li>Alpha channel support</li>
+                        <li>Multiple track capabilities</li>
+                        <li>Industry standard in professional video workflows</li>
+                    </ul>
+                    
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li>Larger file sizes</li>
+                        <li>Not fully optimized for web delivery</li>
+                        <li>Requires QuickTime on non-Apple systems</li>
+                    </ul>
+                    
+                    <h3>Best Applications</h3>
+                    <ul>
+                        <li>Professional animation production</li>
+                        <li>High-end motion graphics</li>
+                        <li>Visual effects workflows</li>
+                        <li>Animation with alpha channel requirements</li>
+                    </ul>
+                `
+            },
+            'MP4': {
+                title: 'MPEG-4 Part 14 (MP4)',
+                specs: `
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li><strong>Type:</strong> Video/Animation Container</li>
+                        <li><strong>Color Depth:</strong> Dependent on codec (typically 24-bit)</li>
+                        <li><strong>Codecs:</strong> H.264, H.265, MPEG-4 Part 2</li>
+                        <li><strong>Audio:</strong> AAC, MP3</li>
+                        <li><strong>Platform Support:</strong> Universal (all modern devices and browsers)</li>
+                    </ul>
+                    
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>Excellent compression efficiency</li>
+                        <li>Universal compatibility</li>
+                        <li>Good balance of quality and file size</li>
+                        <li>Streamable content</li>
+                    </ul>
+                    
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li>Limited alpha channel support (codec dependent)</li>
+                        <li>Lossy compression</li>
+                        <li>Not optimized for animation editing workflows</li>
+                    </ul>
+                    
+                    <h3>Best Applications</h3>
+                    <ul>
+                        <li>Rendered animation delivery</li>
+                        <li>Web video animations</li>
+                        <li>Mobile animation content</li>
+                        <li>Final delivery format for 3D animations</li>
+                    </ul>
+                `
+            },
+            'APNG': {
+                title: 'Animated Portable Network Graphics (APNG)',
+                specs: `
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li><strong>Type:</strong> Bitmap Animation</li>
+                        <li><strong>Color Depth:</strong> 24-bit (16.7 million colors)</li>
+                        <li><strong>Transparency:</strong> 8-bit alpha channel</li>
+                        <li><strong>Compression:</strong> Lossless</li>
+                        <li><strong>Platform Support:</strong> Most modern browsers (except IE)</li>
+                    </ul>
+                    
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>Full color depth (24-bit)</li>
+                        <li>True alpha transparency</li>
+                        <li>Better compression than GIF</li>
+                        <li>Backward compatible with PNG</li>
+                    </ul>
+                    
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li>Larger file sizes than GIF for simple animations</li>
+                        <li>Less tool support than GIF</li>
+                        <li>No native support in some older browsers</li>
+                        <li>No audio support</li>
+                    </ul>
+                    
+                    <h3>Best Applications</h3>
+                    <ul>
+                        <li>High-quality web animations</li>
+                        <li>UI elements requiring transparency</li>
+                        <li>Animated logos and icons</li>
+                        <li>Modern web design elements</li>
+                    </ul>
+                `
+            },
+            'SVG': {
+                title: 'Scalable Vector Graphics Animation (SVG)',
+                specs: `
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li><strong>Type:</strong> Vector Animation</li>
+                        <li><strong>Format:</strong> XML-based text file</li>
+                        <li><strong>Animation Methods:</strong> SMIL, CSS, JavaScript</li>
+                        <li><strong>Interactivity:</strong> Full JavaScript integration</li>
+                        <li><strong>Platform Support:</strong> All modern browsers</li>
+                    </ul>
+                    
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>Perfect scaling at any resolution</li>
+                        <li>Extremely small file size</li>
+                        <li>Directly editable with text editors</li>
+                        <li>Full interactivity capabilities</li>
+                        <li>Accessible and SEO-friendly</li>
+                    </ul>
+                    
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li>Limited for photorealistic content</li>
+                        <li>Complex animations can impact performance</li>
+                        <li>SMIL animation deprecated in some browsers</li>
+                    </ul>
+                    
+                    <h3>Best Applications</h3>
+                    <ul>
+                        <li>UI/UX animations</li>
+                        <li>Interactive data visualizations</li>
+                        <li>Responsive web animations</li>
+                        <li>Animated icons and illustrations</li>
+                    </ul>
+                `
+            },
+            '3DS': {
+                title: '3D Studio File Format (3DS)',
+                specs: `
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li><strong>Type:</strong> 3D Animation</li>
+                        <li><strong>Geometry:</strong> Mesh objects, materials</li>
+                        <li><strong>Animation:</strong> Basic keyframe support</li>
+                        <li><strong>Limitations:</strong> Max 65,536 vertices per mesh</li>
+                        <li><strong>Platform Support:</strong> Most 3D applications</li>
+                    </ul>
+                    
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>Wide compatibility across 3D software</li>
+                        <li>Simple structure</li>
+                        <li>Well-documented format</li>
+                        <li>Long-established standard</li>
+                    </ul>
+                    
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li>Legacy format with technical limitations</li>
+                        <li>Limited animation capabilities</li>
+                        <li>No support for advanced materials</li>
+                        <li>Lacking in modern features (rigging, etc.)</li>
+                    </ul>
+                    
+                    <h3>Best Applications</h3>
+                    <ul>
+                        <li>3D modeling and animation</li>
+                        <li>3D game development</li>
+                        <li>3D visualization and simulation</li>    
+                    </ul>
+                `
+            }
+        }    
+    </script>
