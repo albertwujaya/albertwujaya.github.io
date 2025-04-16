@@ -58,7 +58,7 @@
         /* Format cards styles */
         .format-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 30px;
             margin-bottom: 30px;
@@ -72,7 +72,7 @@
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            height: 150px;
+            height: auto;
             overflow: hidden;
         }
         
@@ -101,10 +101,24 @@
             transition: opacity 0.3s ease;
             overflow-y: auto;
             border-radius: 8px;
+            z-index: 2;
         }
         
         .format-card:hover .format-description {
             opacity: 1;
+        }
+        
+        .card-video-container {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .card-video {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         .section-title {
@@ -113,6 +127,72 @@
             margin: 40px 0 20px 0;
             border-bottom: 2px solid #e74c3c;
             padding-bottom: 10px;
+        }
+        
+        /* Video Popup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: 5% auto;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .modal-header {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .close-btn {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-btn:hover {
+            color: #ddd;
+        }
+        
+        .modal-body {
+            padding: 0;
+            background-color: #000;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        
+        .modal-video {
+            width: 100%;
+            display: block;
         }
     </style>
 </head>
@@ -127,93 +207,153 @@
     </div>
     
     <h2 class="section-title">Video File Formats</h2>
-    <p>Hover over each format card to learn more about its characteristics and uses.</p>
+    <p>Each card shows a video sample. Click on a card to watch the video in fullscreen mode or hover to learn more about the format's characteristics.</p>
     
     <div class="format-cards">
-        <div class="format-card">
+        <div class="format-card" data-video="videos/2795691-uhd_3840_2160_25fps.mp4" data-title="MP4 Sample">
             <div class="format-title">MP4</div>
             <p>MPEG-4 Part 14</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>MP4 (MPEG-4 Part 14)</h3>
                 <p>The most universal video container format today, MP4 combines efficient compression with preserved visual quality. It typically integrates the H.264 codec that allows relatively small file sizes without significantly sacrificing image quality, making it the de facto standard for streaming platforms and digital video sharing.</p>
             </div>
         </div>
         
-        <div class="format-card">
+        <div class="format-card" data-video="videos/2795691-uhd_3840_2160_25fps.avi" data-title="AVI Sample">
             <div class="format-title">AVI</div>
             <p>Audio Video Interleave</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>AVI (Audio Video Interleave)</h3>
                 <p>Developed by Microsoft as one of the early digital video formats, AVI synchronizes audio and video data in one container. Although less efficient in compression compared to modern formats, AVI is maintained in professional video production due to its ability to store raw data with high quality.</p>
             </div>
         </div>
         
-        <div class="format-card">
+        <div class="format-card" data-video="videos/2795691-uhd_3840_2160_25fps.mov" data-title="MOV Sample">
             <div class="format-title">MOV</div>
             <p>QuickTime File Format</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>MOV (QuickTime File Format)</h3>
                 <p>An exclusive Apple format designed for macOS and iOS ecosystems. MOV supports various multimedia tracks including video, audio, text, and special effects in a single file, making it an ideal choice for creative video production needs.</p>
             </div>
         </div>
         
-        <div class="format-card">
+        <div class="format-card" data-video="videos/2795691-uhd_3840_2160_25fps.mkv" data-title="MKV Sample">
             <div class="format-title">MKV</div>
             <p>Matroska Video</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>MKV (Matroska Video)</h3>
                 <p>As an open-source container format, MKV offers high flexibility with the ability to store various multimedia elements. This format supports multiple audio tracks, subtitles, and chapters in one file, making it popular for archiving high-quality film and TV series content.</p>
             </div>
         </div>
         
-        <div class="format-card">
+        <div class="format-card" data-video="videos/2795691-uhd_3840_2160_25fps.wmv" data-title="WMV Sample">
             <div class="format-title">WMV</div>
             <p>Windows Media Video</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>WMV (Windows Media Video)</h3>
                 <p>Specifically designed for optimization on Windows platforms, this format offers impressive compression ratios. WMV maintains adequate visual quality for business streaming needs and multimedia presentations.</p>
             </div>
         </div>
         
-        <div class="format-card">
+        <div class="format-card" data-video="videos/2795691-uhd_3840_2160_25fps.flv" data-title="FLV Sample">
             <div class="format-title">FLV</div>
             <p>Flash Video Format</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>FLV (Flash Video Format)</h3>
                 <p>As a pioneer format of the online video era, FLV once dominated Adobe Flash-based web platforms. Although Flash technology is no longer supported, this format played an important role in the evolution of digital video content distribution.</p>
             </div>
         </div>
         
-        <div class="format-card">
+        <div class="format-card" data-video="videos/2795691-uhd_3840_2160_25fps.webm" data-title="WebM Sample">
             <div class="format-title">WebM</div>
             <p>Web Video Format</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>WebM</h3>
                 <p>Developed as an open-source alternative for modern web video, WebM optimizes streaming performance via VP8/VP9 codecs. This format has become an important standard for HTML5 video content with efficient and royalty-free compression.</p>
             </div>
         </div>
         
-        <div class="format-card">
+        <div class="format-card" data-video="videos/2795691-uhd_3840_2160_25fps.mpg" data-title="MPEG-2 Sample">
             <div class="format-title">MPEG-2</div>
             <p>Motion Picture Experts Group</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>MPEG-2</h3>
                 <p>As an early generation digital television broadcasting standard, MPEG-2 became the foundation of DVD technology and digital TV broadcasting. This format balances image quality needs with broadcast bandwidth limitations.</p>
             </div>
         </div>
         
-        <div class="format-card">
+        <div class="format-card" data-video="DOP_ED47DF65-2795691-uhd3840216025fps_W_.H264" data-title="H.264 Sample">
             <div class="format-title">H.264</div>
             <p>MPEG-4 AVC</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>H.264 (MPEG-4 AVC)</h3>
                 <p>This video codec revolutionized the industry with its extraordinary compression efficiency. As the backbone of various streaming platforms, H.264 is capable of delivering HD quality with relatively low bitrates.</p>
             </div>
         </div>
         
-        <div class="format-card">
+        <div class="format-card" data-video="2795691-uhd-3840-2160-25fps-zsvm5p.hevc.mp4" data-title="HEVC Sample">
             <div class="format-title">HEVC</div>
             <p>H.265</p>
+            <div class="card-video-container">
+                <video class="card-video" muted loop>
+                    <source src="videos/2795691-uhd_3840_2160_25fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="format-description">
                 <h3>HEVC (H.265)</h3>
                 <p>Representing the new generation of video codecs, HEVC offers a 50% efficiency improvement over its predecessor (H.264). Its ability to handle ultra HD content (4K/8K) with lower bandwidth makes it the future standard for premium streaming services.</p>
@@ -221,6 +361,96 @@
         </div>
     </div>
     
+    <!-- Video Modal Popup -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Video Preview</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <video id="modalVideo" class="modal-video" controls>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    
     <a href="../index.html" class="back-link">← Back to Categories</a>
+
+    <script>
+        // Get the modal
+        const modal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalTitle = document.querySelector('.modal-title');
+        const closeBtn = document.querySelector('.close-btn');
+        const formatCards = document.querySelectorAll('.format-card');
+        const cardVideos = document.querySelectorAll('.card-video');
+        
+        // Auto-play videos when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.play();
+                } else {
+                    entry.target.pause();
+                }
+            });
+        }, { threshold: 0.6 });
+        
+        // Observe all videos
+        cardVideos.forEach(video => {
+            observer.observe(video);
+        });
+        
+        // Add click event to all format cards
+        formatCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Prevent opening the modal if clicking on the description
+                if (e.target.closest('.format-description')) {
+                    return;
+                }
+                
+                const videoSrc = this.getAttribute('data-video');
+                const videoTitle = this.getAttribute('data-title');
+                
+                // Set the video source and title
+                modalVideo.querySelector('source').src = videoSrc;
+                modalTitle.textContent = videoTitle;
+                
+                // Reload the video with the new source
+                modalVideo.load();
+                
+                // Display the modal
+                modal.style.display = 'block';
+                
+                // Auto play the video
+                modalVideo.play();
+            });
+        });
+        
+        // Close the modal when clicking the close button
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            modalVideo.pause();
+        });
+        
+        // Close the modal when clicking outside of it
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modalVideo.pause();
+            }
+        });
+        
+        // Prevent the hover description from interfering with clicks
+        const descriptions = document.querySelectorAll('.format-description');
+        descriptions.forEach(desc => {
+            desc.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
 </body>
 </html>
