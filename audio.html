@@ -559,55 +559,38 @@
         }
         
         // Add click event to all play buttons in cards
-// Example fix for the play buttons
-playButtons.forEach((button, index) => {
-    button.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent card click
-        console.log('Play button clicked!'); // Add this to verify the click is detected
-        
-        const card = formatCards[index];
-        const audioSrc = card.getAttribute('data-audio');
-        console.log('Audio source:', audioSrc); // Add this to verify the audio path
-        
-        // R
-        modalAudio.querySelector('source').src = audioSrc;
-        modalAudio.load();
-        
-        // Initialize audio context
-        initAudioContext();
-        
-        // Display the modal
-        modal.style.display = 'block';
-        
-        // Auto play the audio and start visualizer
-        modalAudio.play()
-            .then(() => {
-                drawVisualizer();
-            })
-            .catch(err => {
-                console.error('Error playing audio:', err);
-            });
-    });
-});
-
-        // Add click event to all format cards            
-        formatCards.forEach((card, index) => {
-            card.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent card click                
-                console.log('Card clicked!'); // Add this to verify the click is detected
+        playButtons.forEach((button, index) => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent card click
                 
-                playButtons.forEach((button, buttonIndex) => {
-                    if (buttonIndex === index) {
-                        button.click(); // Simulate a click on the play button
-                    }
-                })
-        })
+                const card = formatCards[index];
+                const audioSrc = card.getAttribute('data-audio');
                 
+                // Set the audio source and titles
+                modalAudio.querySelector('source').src = audioSrc;
+                modalTitle.textContent = card.getAttribute('data-title');
+                modalFormatTitle.textContent = card.querySelector('.format-title').textContent;
+                modalFormatDescription.textContent = card.querySelector('.format-description p').textContent;
                 
+                // Reload the audio with the new source
+                modalAudio.load();
+                
+                // Initialize audio context
+                initAudioContext();
+                
+                // Display the modal
+                modal.style.display = 'block';
+                
+                // Auto play the audio and start visualizer
+                modalAudio.play()
+                    .then(() => {
+                        drawVisualizer();
+                    })
                     .catch(err => {
                         console.error('Error playing audio:', err);
                     });
-            }); 
+            });
+        });
         
         // Close the modal when clicking the close button
         closeBtn.addEventListener('click', function() {
