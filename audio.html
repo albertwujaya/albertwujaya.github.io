@@ -103,6 +103,9 @@
             overflow-y: auto;
             border-radius: 8px;
             z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         
         .format-card:hover .format-description {
@@ -177,42 +180,43 @@
             border-radius: 4px;
             margin-top: 10px;
         }
-        .play-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #3498db;
-    color: white;
-    border-radius: 50%;
-    margin: 0 auto 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.play-button:hover {
-    background-color: #2980b9;
-}
-
-.play-icon {
-    width: 0;
-    height: 0;
-    border-left: 10px solid white;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    margin-left: 4px;
-}
-
-.pause-icon {
-    display: none;
-    width: 14px;
-    height: 14px;
-    border-left: 4px solid white;
-    border-right: 4px solid white;
-    margin: 0 auto;
-}
-        /* Audio Modal Popup */
+        
+        /* Popup play button styles */
+        .popup-play-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            color: #3498db;
+            border-radius: 50%;
+            margin: 15px auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .popup-play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .popup-play-icon {
+            width: 0;
+            height: 0;
+            border-left: 20px solid #3498db;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+        
+        .description-text {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+        
+        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -307,13 +311,6 @@
         }
     </style>
 </head>
-<div class="audio-player-container">
-    <div class="play-button">
-        <div class="play-icon"></div>
-        <div class="pause-icon"></div>
-    </div>
-    <div class="waveform"></div>
-</div>
 <body>
     <div class="category-header">
         <div class="category-icon audio-icon">A</div>
@@ -321,26 +318,27 @@
     </div>
     
     <div class="description">
-        <p>High-quality audio formats for music, podcasts, sound effects, and other audio content supporting various levels of compression and fidelity. Click on a format card to listen to an audio sample.</p>
+        <p>High-quality audio formats for music, podcasts, sound effects, and other audio content supporting various levels of compression and fidelity. Hover on a format card to see details and play an audio sample.</p>
     </div>
     
     <h2 class="section-title">Audio File Formats</h2>
-    <p>Click on a card to play an audio sample or hover to learn more about the format's characteristics.</p>
+    <p>Hover on a card to view format details and play an audio sample.</p>
     
     <div class="format-cards">
         <div class="format-card" data-audio="audios/Mzg1ODMxNTIzMzg1ODM3_JzthsfvUY24.wav" data-title="WAV Sample">
             <div class="format-title">WAV</div>
             <p>Waveform Audio File Format</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>WAV (Waveform Audio File Format)</h3>
-                <p>As a standard audio format in Windows environments, WAV stores sound data in uncompressed PCM form. This format produces high-precision sound reproduction, although it requires significant storage space. This advantage makes WAV the primary choice in professional audio production and recording editing processes.</p>
+                <div class="description-text">
+                    <h3>WAV (Waveform Audio File Format)</h3>
+                    <p>As a standard audio format in Windows environments, WAV stores sound data in uncompressed PCM form. This format produces high-precision sound reproduction, although it requires significant storage space. This advantage makes WAV the primary choice in professional audio production and recording editing processes.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
         
@@ -348,15 +346,16 @@
             <div class="format-title">MP3</div>
             <p>MPEG-1 Audio Layer 3</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>MP3 (MPEG-1 Audio Layer 3)</h3>
-                <p>This lossy compression format has become the de facto standard for digital music distribution thanks to its balanced ratio of file size and sound quality. With sophisticated encoding techniques, MP3 can dramatically reduce file size while maintaining acceptable audio quality, making it ideal for web applications and portable devices.</p>
+                <div class="description-text">
+                    <h3>MP3 (MPEG-1 Audio Layer 3)</h3>
+                    <p>This lossy compression format has become the de facto standard for digital music distribution thanks to its balanced ratio of file size and sound quality. With sophisticated encoding techniques, MP3 can dramatically reduce file size while maintaining acceptable audio quality, making it ideal for web applications and portable devices.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
         
@@ -364,15 +363,16 @@
             <div class="format-title">AAC</div>
             <p>Advanced Audio Coding</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>AAC (Advanced Audio Coding)</h3>
-                <p>As the successor to MP3, this format offers a more efficient compression algorithm with superior sound quality at the same bitrate. AAC has been widely adopted by leading streaming platforms due to its superior performance in audio frequency reproduction and good device compatibility.</p>
+                <div class="description-text">
+                    <h3>AAC (Advanced Audio Coding)</h3>
+                    <p>As the successor to MP3, this format offers a more efficient compression algorithm with superior sound quality at the same bitrate. AAC has been widely adopted by leading streaming platforms due to its superior performance in audio frequency reproduction and good device compatibility.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
         
@@ -380,15 +380,16 @@
             <div class="format-title">AIFF</div>
             <p>Audio Interchange File Format</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>AIFF (Audio Interchange File Format)</h3>
-                <p>Developed by Apple as an alternative to WAV, AIFF stores audio data in uncompressed form with high resolution. This format has become the standard in music production in macOS environments, offering perfect studio sound quality for professional needs.</p>
+                <div class="description-text">
+                    <h3>AIFF (Audio Interchange File Format)</h3>
+                    <p>Developed by Apple as an alternative to WAV, AIFF stores audio data in uncompressed form with high resolution. This format has become the standard in music production in macOS environments, offering perfect studio sound quality for professional needs.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
         
@@ -396,15 +397,16 @@
             <div class="format-title">FLAC</div>
             <p>Free Lossless Audio Codec</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>FLAC (Free Lossless Audio Codec)</h3>
-                <p>This open-source format provides audio compression without losing original quality, making it a favorite among audiophiles. FLAC can reduce file size by about 50-60% from its original source while maintaining every sound detail, ideal for high-quality music archives.</p>
+                <div class="description-text">
+                    <h3>FLAC (Free Lossless Audio Codec)</h3>
+                    <p>This open-source format provides audio compression without losing original quality, making it a favorite among audiophiles. FLAC can reduce file size by about 50-60% from its original source while maintaining every sound detail, ideal for high-quality music archives.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
         
@@ -412,15 +414,16 @@
             <div class="format-title">OGG Vorbis</div>
             <p>Open Source Audio Format</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>OGG Vorbis</h3>
-                <p>As an open-source audio solution, this format offers a royalty-free alternative to MP3 with comparable quality. The Vorbis codec in OGG containers is widely implemented in open-source multimedia applications, including games and digital music players.</p>
+                <div class="description-text">
+                    <h3>OGG Vorbis</h3>
+                    <p>As an open-source audio solution, this format offers a royalty-free alternative to MP3 with comparable quality. The Vorbis codec in OGG containers is widely implemented in open-source multimedia applications, including games and digital music players.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
         
@@ -428,15 +431,16 @@
             <div class="format-title">WMA</div>
             <p>Windows Media Audio</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>WMA (Windows Media Audio)</h3>
-                <p>Developed by Microsoft as a response to MP3, this format provides better audio performance at low bitrates. WMA integrates perfectly with the Windows ecosystem and is often used for multimedia content based on Microsoft platforms.</p>
+                <div class="description-text">
+                    <h3>WMA (Windows Media Audio)</h3>
+                    <p>Developed by Microsoft as a response to MP3, this format provides better audio performance at low bitrates. WMA integrates perfectly with the Windows ecosystem and is often used for multimedia content based on Microsoft platforms.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
         
@@ -444,15 +448,16 @@
             <div class="format-title">ALAC</div>
             <p>Apple Lossless Audio Codec</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>ALAC (Apple Lossless Audio Codec)</h3>
-                <p>This exclusive Apple format offers lossless compression with quality equivalent to FLAC. ALAC is specifically designed for optimal integration with Apple devices, allowing digital music collections to be stored without compromising quality within the iOS and macOS ecosystem.</p>
+                <div class="description-text">
+                    <h3>ALAC (Apple Lossless Audio Codec)</h3>
+                    <p>This exclusive Apple format offers lossless compression with quality equivalent to FLAC. ALAC is specifically designed for optimal integration with Apple devices, allowing digital music collections to be stored without compromising quality within the iOS and macOS ecosystem.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
         
@@ -460,15 +465,16 @@
             <div class="format-title">Opus</div>
             <p>Modern Audio Codec</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>Opus</h3>
-                <p>This modern audio format is dedicated to real-time applications such as VoIP communications and streaming. With dynamic bitrate flexibility and superior performance at low latency, Opus is becoming an emerging standard for teleconferencing applications and multimedia streaming.</p>
+                <div class="description-text">
+                    <h3>Opus</h3>
+                    <p>This modern audio format is dedicated to real-time applications such as VoIP communications and streaming. With dynamic bitrate flexibility and superior performance at low latency, Opus is becoming an emerging standard for teleconferencing applications and multimedia streaming.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
         
@@ -476,15 +482,16 @@
             <div class="format-title">MIDI</div>
             <p>Musical Instrument Digital Interface</p>
             <div class="audio-player-container">
-                <div class="play-button">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
                 <div class="waveform"></div>
             </div>
             <div class="format-description">
-                <h3>MIDI (Musical Instrument Digital Interface)</h3>
-                <p>Unlike conventional audio formats, MIDI stores digital music instruction data in the form of playing parameters. This format is very efficient in file size and is widely used in digital music production, synthesizers, and interactive multimedia applications due to its easily modifiable nature.</p>
+                <div class="description-text">
+                    <h3>MIDI (Musical Instrument Digital Interface)</h3>
+                    <p>Unlike conventional audio formats, MIDI stores digital music instruction data in the form of playing parameters. This format is very efficient in file size and is widely used in digital music production, synthesizers, and interactive multimedia applications due to its easily modifiable nature.</p>
+                </div>
+                <div class="popup-play-button">
+                    <div class="popup-play-icon"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -510,10 +517,6 @@
                     <h3 id="modalFormatTitle"></h3>
                     <p id="modalFormatDescription"></p>
                 </div>
-                <div class="play-button" id="modalPlayButton">
-                    <div class="play-icon"></div>
-                    <div class="pause-icon"></div>
-                </div>
             </div>
         </div>
     </div>
@@ -529,8 +532,7 @@
         const modalFormatDescription = document.getElementById('modalFormatDescription');
         const closeBtn = document.querySelector('.close-btn');
         const formatCards = document.querySelectorAll('.format-card');
-        const playButtons = document.querySelectorAll('.play-button');
-        const modalPlayButton = document.getElementById('modalPlayButton');
+        const popupPlayButtons = document.querySelectorAll('.popup-play-button');
         
         // Audio context for visualizer
         let audioContext;
@@ -604,8 +606,8 @@
             }
         }
         
-        // Add click event to all play buttons in cards
-        playButtons.forEach((button, index) => {
+        // Add click event to all popup play buttons
+        popupPlayButtons.forEach((button, index) => {
             button.addEventListener('click', function(e) {
                 e.stopPropagation(); // Prevent card click
                 
@@ -616,7 +618,7 @@
                 modalAudio.querySelector('source').src = audioSrc;
                 modalTitle.textContent = card.getAttribute('data-title');
                 modalFormatTitle.textContent = card.querySelector('.format-title').textContent;
-                modalFormatDescription.textContent = card.querySelector('.format-description p').textContent;
+                modalFormatDescription.textContent = card.querySelector('.description-text p').textContent;
                 
                 // Reload the audio with the new source
                 modalAudio.load();
@@ -636,17 +638,6 @@
                         console.error('Error playing audio:', err);
                     });
             });
-        });
-        
-        // Add click event to the modal play button
-        modalPlayButton.addEventListener('click', function() {
-            if (modalAudio.paused) {
-                modalAudio.play();
-                drawVisualizer();
-            } else {
-                modalAudio.pause();
-                stopVisualizer();
-            }
         });
         
         // Close the modal when clicking the close button

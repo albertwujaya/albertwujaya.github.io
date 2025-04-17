@@ -188,7 +188,14 @@
                     <img src="images/kristine-kozaka-N_sK_EtNmWY-unsplash.png" alt="PNG format sample">
                 </div>
                 <h3>PNG (Portable Network Graphics)</h3>
-                <p>This lossless format is the primary choice for web design because it supports transparency and perfectly maintains image quality. PNG is very suitable for images with text elements or sharp lines because it doesn't experience quality degradation as in lossy compression.</p>
+                <p>This lossless format is the primary choice for web design because it supports transparency and perfectly maintains image quality. PNG is very suitable for images with text elements or sharp lines because it doesn't experience quality degradation as in lossy compression.
+                </p>- Removes compression artifacts from the JPEG
+                    - Adds transparency support (which JPEG lacks)
+                    - Changes to lossless compression (JPEG uses lossy)
+                    - Increases file size significantly
+                    - Preserves current quality but prevents further quality loss
+                </p>
+                </p>
             </div>
         </div>
         
@@ -204,6 +211,13 @@
                 </div>
                 <h3>GIF (Graphics Interchange Format)</h3>
                 <p>With animation capabilities and limited color palette (256 colors), GIF remains relevant for simple web content. This format is very effective for small graphic elements such as icons, logos, or short animations due to its lightweight file size and support for looping animations.</p>
+            </p>
+            - Reduces color depth (JPEG supports millions of colors, GIF only 256)
+            - Adds animation capability
+            - Adds basic transparency support
+            - Often degrades image quality significantly
+            - Creates visible color banding in smooth gradients
+            </p>            
             </div>
         </div>
         
@@ -219,6 +233,12 @@
                 </div>
                 <h3>BMP (Bitmap Image File)</h3>
                 <p>As an uncompressed image format, BMP stores complete data for each pixel. Although this format provides the most accurate image representation, its large file size makes it less efficient for modern storage.</p>
+                <p>- Removes all compression (JPEG is compressed)
+                    - Dramatically increases file size
+                    - Eliminates compression artifacts
+                    - Removes metadata support present in JPEG
+                    - Preserves exact color values from the decompressed JPEG
+                </p>
             </div>
         </div>
         
@@ -234,6 +254,12 @@
                 </div>
                 <h3>TIFF (Tagged Image File Format)</h3>
                 <p>Widely used in professional fields, TIFF supports lossless compression and rich metadata storage. This format has become a standard in the high-quality printing industry because of its ability to perfectly maintain image details.</p>
+                <p> - Adds support for layers and multiple pages
+                    - Can maintain lossy compression or convert to lossless
+                    - Adds support for CMYK color space (better for printing)
+                    - Adds better metadata capabilities
+                    - Typically increases file size
+                </p>
             </div>
         </div>
         
@@ -249,6 +275,18 @@
                 </div>
                 <h3>JPEG2000</h3>
                 <p>This new generation format uses wavelet transformation for more sophisticated compression. JPEG2000 excels in resolution scalability, better image quality, and error resilience compared to its predecessor (JPEG).</p>
+                <p> 
+                    - Improves compression efficiency
+                    - Adds support for transparency
+                    - Reduces artifacts at similar compression levels
+                    - Adds progressive rendering capability
+                    - Supports higher bit depths
+                    - Improves compression efficiency
+                    - Adds support for transparency
+                    - Reduces artifacts at similar compression levels
+                    - Adds progressive rendering capability
+                    - Supports higher bit depths
+                </p>
             </div>
         </div>
         
@@ -264,6 +302,12 @@
                 </div>
                 <h3>SVG (Scalable Vector Graphics)</h3>
                 <p>As a vector-based format, SVG uses XML code to represent images. This format's advantage in modern web design comes from its ability to scale without losing quality and its very efficient file size.</p>
+                <p> - Completely changes representation from raster to vector
+                    - Loses photographic detail (poor choice for photos)
+                    - Makes the file infinitely scalable
+                    - Dramatically increases file size for complex images
+                    - Changes file content to mathematical descriptions
+                    </p>
             </div>
         </div>
         
@@ -279,6 +323,12 @@
                 </div>
                 <h3>HEIF (High Efficiency Image File Format)</h3>
                 <p>This cutting-edge format offers better image quality with smaller file sizes than JPEG. HEIF is increasingly popular on mobile devices because of its ability to store various data including images, animations, and metadata in a single file.</p>
+                <p>- Improves compression efficiency
+                    - Adds support for multiple images in one file
+                    - Adds transparency support
+                    - Supports higher bit depths than JPEG
+                    - Offers better quality at similar file sizes
+                </p>
             </div>
         </div>
         
@@ -294,6 +344,10 @@
                 </div>
                 <h3>RAW (Image Sensor Data Format)</h3>
                 <p>Storing raw data from camera sensors, this format provides maximum flexibility in editing. RAW is very important in professional photography because it maintains all original information for post-shooting processing.</p>
+                <p> - - Not a true conversion target (incompatible concepts)
+                    - Would lose the purpose of RAW format if converted from JPEG
+                    - Cannot restore data already lost in JPEG compression
+                <p>                   
             </div>
         </div>
         
@@ -308,6 +362,13 @@
                     <img src="images/kristine-kozaka-N_sK_EtNmWY-unsplash.webp" alt="WEBP format sample">
                 </div>
                 <h3>WEBP</h3>
+                <p>
+                    - Reduces file size at similar quality
+                    - Adds transparency support
+                    - Adds animation capability
+                    - Can be either lossy or lossless
+                    - Often preserves more detail at smaller sizes
+                </p>
                 <p>Developed specifically for the web, this format combines the advantages of both lossy and lossless compression. WEBP becomes an optimal solution for accelerating web page loading while maintaining good visual quality, making it a modern alternative to JPEG and PNG.</p>
             </div>
         </div>
