@@ -495,7 +495,131 @@
             </div>
         </div>
     </div>
+<h2 class="section-title">MP3 Format Conversions</h2>
+<div class="description" style="margin-bottom: 40px;">
+    <h3 style="color: #3498db; margin-bottom: 15px;">Changes When Converting from MP3 to Other Audio Formats</h3>
+    <p>When converting from MP3 to other audio formats, these are the specific changes that occur:</p>
     
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+        <!-- WAV -->
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px;">
+            <h4 style="color: #3498db; margin-bottom: 10px;">WAV</h4>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li>Changes from lossy to uncompressed format</li>
+                <li>Dramatically increases file size</li>
+                <li>Removes compression artifacts</li>
+                <li>Cannot recover audio quality already lost in MP3 compression</li>
+                <li>Improves editing capabilities (no generation loss)</li>
+                <li>Removes MP3 metadata structure (replaced with WAV metadata)</li>
+            </ul>
+        </div>
+        
+        <!-- AAC -->
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px;">
+            <h4 style="color: #3498db; margin-bottom: 10px;">AAC</h4>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li>Changes compression algorithm (MP3 to AAC)</li>
+                <li>Usually improves sound quality at similar bitrates</li>
+                <li>Better handling of higher frequencies</li>
+                <li>Maintains similar file sizes</li>
+                <li>Often improves stereo imaging</li>
+                <li>Different metadata structure</li>
+            </ul>
+        </div>
+        
+        <!-- AIFF -->
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px;">
+            <h4 style="color: #3498db; margin-bottom: 10px;">AIFF</h4>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li>Changes from lossy to uncompressed format</li>
+                <li>Similar to WAV but with Apple origins</li>
+                <li>Dramatically increases file size</li>
+                <li>Cannot recover lost audio information</li>
+                <li>Better compatibility with macOS/Apple software</li>
+                <li>Different metadata structure</li>
+            </ul>
+        </div>
+        
+        <!-- FLAC -->
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px;">
+            <h4 style="color: #3498db; margin-bottom: 10px;">FLAC</h4>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li>Changes from lossy to lossless compression</li>
+                <li>Increases file size significantly (but smaller than WAV/AIFF)</li>
+                <li>Cannot recover audio quality already lost in MP3</li>
+                <li>Adds support for higher bit depths and sample rates</li>
+                <li>More extensive metadata capabilities</li>
+                <li>Better for archival purposes</li>
+            </ul>
+        </div>
+        
+        <!-- OGG Vorbis -->
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px;">
+            <h4 style="color: #3498db; margin-bottom: 10px;">OGG Vorbis</h4>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li>Changes compression algorithm</li>
+                <li>Often provides better sound quality at lower bitrates</li>
+                <li>Open-source format without licensing restrictions</li>
+                <li>May offer improved sound at similar file sizes</li>
+                <li>Different metadata structure</li>
+                <li>Less widely supported than MP3</li>
+            </ul>
+        </div>
+        
+        <!-- WMA -->
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px;">
+            <h4 style="color: #3498db; margin-bottom: 10px;">WMA</h4>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li>Changes to Microsoft's proprietary format</li>
+                <li>Variable quality depending on encoder settings</li>
+                <li>Often worse compatibility outside Windows ecosystem</li>
+                <li>Can include DRM restrictions</li>
+                <li>Different metadata structure</li>
+                <li>Generally similar file sizes</li>
+            </ul>
+        </div>
+        
+        <!-- ALAC -->
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px;">
+            <h4 style="color: #3498db; margin-bottom: 10px;">ALAC</h4>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li>Changes from lossy to lossless compression</li>
+                <li>Apple's lossless format</li>
+                <li>Increases file size significantly</li>
+                <li>Cannot recover audio quality already lost</li>
+                <li>Better compatibility with Apple devices</li>
+                <li>Better for archival while maintaining Apple ecosystem compatibility</li>
+            </ul>
+        </div>
+        
+        <!-- Opus -->
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px;">
+            <h4 style="color: #3498db; margin-bottom: 10px;">Opus</h4>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li>Changes to newer, more efficient compression</li>
+                <li>Superior quality at very low bitrates</li>
+                <li>Better handling of speech content</li>
+                <li>Potentially smaller files at similar quality</li>
+                <li>Less widely supported than MP3</li>
+                <li>Improved streaming capabilities</li>
+            </ul>
+        </div>
+        
+        <!-- MIDI -->
+        <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px;">
+            <h4 style="color: #3498db; margin-bottom: 10px;">MIDI</h4>
+            <ul style="padding-left: 20px; margin: 0;">
+                <li>Not a true conversion - fundamentally different format types</li>
+                <li>Changes from recorded audio to musical instructions</li>
+                <li>Loses all vocal content and realistic instrument sounds</li>
+                <li>Extremely small file size</li>
+                <li>Contains only note data, not actual recorded sound</li>
+                <li>Cannot accurately represent most MP3 content</li>
+                <li>Would require manual recreation rather than conversion</li>
+            </ul>
+        </div>
+    </div>
+</div>
     <!-- Audio Modal Popup -->
     <div id="audioModal" class="modal">
         <div class="modal-content">

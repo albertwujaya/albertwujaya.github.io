@@ -194,6 +194,185 @@
             width: 100%;
             display: block;
         }
+    .conversion-info-box {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 25px;
+        margin: 40px 0;
+    }
+    
+    .conversion-info-box h2 {
+        color: #e74c3c;
+        font-size: 1.8em;
+        margin-top: 0;
+        border-bottom: 2px solid #e74c3c;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .conversion-info-box h3 {
+        color: #3498db;
+        font-size: 1.3em;
+        margin: 20px 0 10px 0;
+    }
+    
+    .format-conversions {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    
+    .format-conversion {
+        background-color: #f9f9f9;
+        border-left: 4px solid #e74c3c;
+        padding: 15px;
+        border-radius: 0 8px 8px 0;
+    }
+    
+    .format-conversion h3 {
+        margin-top: 0;
+    }
+    
+    .conversion-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .conversion-list li {
+        padding: 6px 0 6px 24px;
+        position: relative;
+    }
+    
+    .conversion-list li:before {
+        content: "•";
+        color: #e74c3c;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+    
+    .note-box {
+        background-color: #f8f4e5;
+        border-left: 4px solid #f39c12;
+        padding: 15px;
+        margin-top: 25px;
+        border-radius: 0 8px 8px 0;
+    }
+</style>
+
+<div class="conversion-info-box">
+    <h2>Changes When Converting from MP4 to Other Video Formats</h2>
+    <p>When converting from MP4 to other video formats, these are the specific changes that occur:</p>
+    
+    <div class="format-conversions">
+        <div class="format-conversion">
+            <h3>AVI</h3>
+            <ul class="conversion-list">
+                <li>Container format changes (MP4 → AVI container)</li>
+                <li>Often results in larger file sizes</li>
+                <li>May have better compatibility with older software/hardware</li>
+                <li>Can lose some advanced features like chapters</li>
+                <li>Often uses different codecs (typically MJPEG, DivX, or Xvid instead of H.264)</li>
+            </ul>
+        </div>
+        
+        <div class="format-conversion">
+            <h3>MOV</h3>
+            <ul class="conversion-list">
+                <li>Container format changes (MP4 → QuickTime container)</li>
+                <li>Similar capabilities but different metadata structure</li>
+                <li>Better compatibility with Apple ecosystem</li>
+                <li>May preserve more metadata during editing</li>
+                <li>Often maintains the same video/audio codecs</li>
+            </ul>
+        </div>
+        
+        <div class="format-conversion">
+            <h3>MKV</h3>
+            <ul class="conversion-list">
+                <li>Container format changes (MP4 → Matroska container)</li>
+                <li>Adds support for multiple subtitle tracks</li>
+                <li>Adds support for more audio tracks</li>
+                <li>Better chapter support</li>
+                <li>Offers more extensive metadata options</li>
+                <li>Can store additional content like fonts and attachments</li>
+            </ul>
+        </div>
+        
+        <div class="format-conversion">
+            <h3>WMV</h3>
+            <ul class="conversion-list">
+                <li>Both container and codec change (typically to VC-1 codec)</li>
+                <li>Usually decreases quality at similar bitrates</li>
+                <li>Better compatibility with older Windows systems</li>
+                <li>Often increases file size for same quality</li>
+                <li>Limited platform support outside Windows</li>
+            </ul>
+        </div>
+        
+        <div class="format-conversion">
+            <h3>FLV</h3>
+            <ul class="conversion-list">
+                <li>Container format changes (MP4 → Flash Video container)</li>
+                <li>Often uses different codecs (VP6 or H.263)</li>
+                <li>Typically lower quality</li>
+                <li>Becoming obsolete (Flash discontinued)</li>
+                <li>Smaller file sizes at the expense of quality</li>
+            </ul>
+        </div>
+        
+        <div class="format-conversion">
+            <h3>WebM</h3>
+            <ul class="conversion-list">
+                <li>Container format changes (MP4 → WebM container)</li>
+                <li>Codec changes to VP8/VP9 from H.264/H.265</li>
+                <li>Open source format (no licensing fees)</li>
+                <li>Better streaming performance in web browsers</li>
+                <li>May offer similar quality at smaller file sizes</li>
+            </ul>
+        </div>
+        
+        <div class="format-conversion">
+            <h3>MPEG-2</h3>
+            <ul class="conversion-list">
+                <li>Both container and codec change</li>
+                <li>Significantly lower compression efficiency</li>
+                <li>Much larger file sizes for similar quality</li>
+                <li>Better compatibility with DVD authoring</li>
+                <li>Less efficient but widely compatible</li>
+            </ul>
+        </div>
+        
+        <div class="format-conversion">
+            <h3>H.264</h3>
+            <ul class="conversion-list">
+                <li>This is often the codec already used in MP4</li>
+                <li>If converting from MP4 using a different codec to H.264, quality may improve</li>
+                <li>Changes compression algorithm if original wasn't H.264</li>
+                <li>May allow for different profile settings</li>
+                <li>No container change necessary if staying in MP4</li>
+            </ul>
+        </div>
+        
+        <div class="format-conversion">
+            <h3>HEVC (H.265)</h3>
+            <ul class="conversion-list">
+                <li>Changes video codec to a newer generation</li>
+                <li>Approximately 50% better compression at same quality</li>
+                <li>Requires more processing power to encode/decode</li>
+                <li>Better handling of 4K+ resolutions</li>
+                <li>May require compatible hardware/software for playback</li>
+                <li>Can remain in MP4 container or use others</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="note-box">
+        <strong>Note:</strong> MP4 is a container format that typically uses H.264/H.265 codecs. Many of these conversions primarily change the container while sometimes also changing the codec used for video/audio compression.
+    </div>
+</div>
     </style>
 </head>
 <body>
@@ -451,6 +630,7 @@
                 e.stopPropagation();
             });
         });
+        
     </script>
 </body>
 </html>
